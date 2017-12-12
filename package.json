@@ -1,0 +1,15 @@
+{
+  "name": "project-1-flashcards",
+  "version": "1.0.0",
+  "description": "",
+  "main": "assets\\app\\app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "license": "ISC"
+}
