@@ -8,6 +8,7 @@ var initCardStack = [
 ]
 
 var currentGameStack = []
+var discardStack = []
 
 /*
  *  Init Game Cards cards
@@ -67,3 +68,24 @@ function markCard( assesment ){
     $('.card').attr('data-mark', 'incorrect')
   }
 }
+
+function selecetCard() {
+  var cardFront = $('figure#front').text()
+  var cardBack = $('figure#back').text()   
+  var dataMark = $('.card').attr('data-mark')
+    return { front : cardFront, back : cardBack, mark : dataMark  } 
+}
+
+//move card and clears mark in DOM, might wa
+//TODO: revaluate this structure 
+
+function moveCard( selectedCard ){
+    $('.card').attr('data-mark', '')
+    if ( selectedCard.mark == 'correct' ){
+      currentGameStack.push( selectedCard )
+    } else {
+      discardStack.push( selectedCard )
+    }
+}
+
+   
