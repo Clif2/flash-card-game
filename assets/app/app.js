@@ -52,15 +52,26 @@ function loadCards( storage, array ){
  */
 
 function getTopCard( cardStack ){
-  topCard = currentGameStack[0]
-  return topCard
+  if (currentGameStack[0] != null) { 
+    topCard = currentGameStack[0]
+      return topCard
+  } else {
+    topCard = {front : 'FIN', back : 'FIN'}
+      return topCard
+  }  
 }
+
 
 function displayCard( topCard ){
   $('figure#front').contents().replaceWith(topCard.front)
   $('figure#back').contents().replaceWith(topCard.back)
 
 } 
+
+/*
+ * Remove/Move card from play
+ *
+ */
 
 function markCard( assesment ){
   if ( assesment === 'correct'){
@@ -71,10 +82,10 @@ function markCard( assesment ){
 }
 
 function selecetCard() {
-  var cardFront = $('figure#front').text()
-  var cardBack = $('figure#back').text()   
+  var cardInPlay = currentGameStack.shift()  
   var dataMark = $('.card').attr('data-mark')
-    return { front : cardFront, back : cardBack, mark : dataMark  } 
+  cardInPlay.mark = dataMark  
+    return cardInPlay 
 }
 
 //move card and clears mark in DOM, might wa
