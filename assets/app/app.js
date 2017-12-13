@@ -27,11 +27,14 @@ function checkLocalCardStack(){
  }
 }
 
+// Could be extended in future, for now a bit wordy  
+
 function initGameStack( checkedStack ){
   if( checkedStack == true ){
     return localStorage.getItem( 'initCardStack' )
   } else {
-    return localStorage.setItem( 'initCardStack', JSON.stringify(initCardStack))
+    localStorage.setItem( 'initCardStack', JSON.stringify(initCardStack))
+    return localStorage.getItem( 'initCardStack' )
   }
 }
 
@@ -46,12 +49,10 @@ function loadCards( storage, array ){
 /*
  * Card getting and Display 
  *
- *
- *
  */
 
 function getTopCard( cardStack ){
-  topCard = cardStack.shift()
+  topCard = currentGameStack[0]
   return topCard
 }
 
