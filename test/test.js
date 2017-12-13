@@ -2,7 +2,16 @@ var assert = require('chai').assert
 var expect = require('chai').expect 
 var should = require('chai').should 
 
+
 var loadCards = require('../assets/app/app.js')
+var getTopCard = require('../assets/app/app.js')
+var displayTopCard = require('../assets/app/app.js')
+
+var testDeck = {
+	front : 'this is the front', 
+	back  : 'this is the back't
+    }
+
 
 describe("Test that loadCards pulls from localStorage and return an array of objects with the same properties", function () {
     it('should return an object', function () {
@@ -20,3 +29,13 @@ describe("Test that loadCards pulls from localStorage and return an array of obj
       var actual = loadCards(localStore, newArray)	
       assert.ownInclude(actual, expected, '== local storage as obj')})
 })
+
+
+
+
+
+
+
+
+
+
