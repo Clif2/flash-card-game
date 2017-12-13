@@ -1,5 +1,13 @@
-function addTwo (num1, num2) {
-    return num2 + num1
+
+var gameStack
+
+function loadCards( storage, array ){
+    array = storage
+    return array
 }
 
-module.exports = addTwo 
+
+
+
+// Exports for Testing 
+module.exports = loadCards
