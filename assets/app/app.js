@@ -2,8 +2,9 @@
 var gameStack
 
 function loadCards( storage, array ){
-    array = storage
-    return array
+  storage = JSON.parse( storage )
+  array = storage
+  return array
 }
 
 

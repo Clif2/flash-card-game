@@ -4,7 +4,7 @@ var should = require('chai').should
 
 var loadCards = require('../assets/app/app.js')
 
-describe("Test that loadCards pulls from localStorage and return an array of objects", function () {
+describe("Test that loadCards pulls from localStorage and return an array of objects with the same properties", function () {
     it('should return an object', function () {
       var testStorage = {
         "Adm Adama" : "Edward James Olmos",
@@ -17,6 +17,6 @@ describe("Test that loadCards pulls from localStorage and return an array of obj
       var localStore = JSON.stringify(testStorage)
       var newArray =  [] 
       var expected = JSON.parse(localStore)
-      var actual = loadCards(testStorage, newArray)	
+      var actual = loadCards(localStore, newArray)	
       assert.ownInclude(actual, expected, '== local storage as obj')})
 })
