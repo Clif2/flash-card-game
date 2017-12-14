@@ -13,7 +13,7 @@ Use ← or → to flip the card
 
 Mark your answer before moving to next card
 
-## Screenshots
+## Screenshot
 
 ![](screen.png)
 
