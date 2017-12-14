@@ -5,6 +5,10 @@
  *
  */
 
+body {
+ background: #AAAAAA;
+}
+
 .threeD {
   width: 200px; 
   height: 260px; 
@@ -30,14 +34,18 @@
 }
 
 #front {
-  background: red;
+  background: white;
+  color: black;
+  border-radius: 2px;
 }
 
 #back {
-  background: blue;
+  background: black;
+  color: white;
+  border-radius: 2px;
   transform: rotateY( 180deg );
 }
 
-.card:hover {
+.flipped {
   transform: rotateY( 180deg ); 
 }

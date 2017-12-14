@@ -1,4 +1,7 @@
-
+/*************************
+ *         
+ *      DATA
+ ***********************/
 var initCardStack = [
     {
     front: 'CARD FRONT', back: 'CARD BACK'
@@ -10,13 +13,62 @@ var initCardStack = [
 var currentGameStack = []
 var discardStack = []
 
-/*
+
+/*************************************************
+ *
+ *
+ *          EVENTS
+ *
+ *
+ *************************************************/
+
+
+//Document load, init Data
+
+$(document).ready( 
+    loadCards( initGameStack ( checkLocalCardStack ), currentGameStack)
+)
+
+//Keypress flips card
+
+$(document).keydown(function( event ){
+ event.preventDefault()   
+ if ( event.which == 37 || event.which == 39 ) {
+   var isFlipped = $('div.card').hasClass('flipped')
+   if ( isFlipped == true ){
+     $('div.card').removeClass('flipped')
+   } else {
+     $('div.card').addClass('flipped')
+   }
+ }
+})
+
+
+//button marks card 
+
+$('button.mark').click( function (){
+ markCard( $( this ).attr( 'data-ans' ) )
+})
+
+//button next card 
+
+$('#next').click( function (){
+  if ( $('.card').attr( 'data-mark' ) == '' ) {
+   displayCard(getTopCard(currentGameStack)) 
+  } else {
+    moveCard(selecetCard())
+    displayCard(getTopCard(currentGameStack))
+  }
+})
+
+/*************************************************
  *  Init Game Cards cards
  *  
  *  Should populate game with data, and allow
  *  for future stacks.  
  *
- */
+ *
+ * ***********************************************/
 
 
 function checkLocalCardStack(){
@@ -46,10 +98,11 @@ function loadCards( storage, array ){
   return array
 }
 
-/*
+/***********************************************
+ *
  * Card getting and Display 
  *
- */
+ ***********************************************/
 
 function getTopCard( cardStack ){
   if (currentGameStack[0] != null) { 
@@ -68,10 +121,11 @@ function displayCard( topCard ){
 
 } 
 
-/*
+/***********************************************
+ *
  * Remove/Move card from play
  *
- */
+ ***********************************************/
 
 function markCard( assesment ){
   if ( assesment === 'correct'){
@@ -91,12 +145,12 @@ function selecetCard() {
 //move card and clears mark in DOM, might wa
 //TODO: revaluate this structure 
 
-function moveCard( selectedCard ){
+function moveCard( cardInPlay ){
     $('.card').attr('data-mark', '')
-    if ( selectedCard.mark == 'correct' ){
-      currentGameStack.push( selectedCard )
+    if (cardInPlay.mark == 'correct' ){
+      discardStack.push( cardInPlay )	 
     } else {
-      discardStack.push( selectedCard )
+      currentGameStack.push( cardInPlay )
     }
 }
 
