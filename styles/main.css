@@ -6,12 +6,12 @@
  */
 
 body {
- background: #AAAAAA;
+ background: #232323;
 }
 
 .threeD {
-  width: 200px; 
-  height: 260px; 
+  width: 300px; 
+  height: 420px; 
   position: relative; 
   perspective: 800px;
 }
@@ -21,7 +21,7 @@ body {
   height: 100%; 
   position: absolute;
   transform-style: preserve-3d; 
-  transition: transform 1s; 
+  transition: all 0.6s cubic-bezier(.25,.8,.25,1);  
 }
 
 .card figure {
@@ -36,16 +36,17 @@ body {
 #front {
   background: white;
   color: black;
-  border-radius: 2px;
+  border-radius: 16px;
 }
 
 #back {
   background: black;
   color: white;
-  border-radius: 2px;
+  border-radius: 16px;
   transform: rotateY( 180deg );
 }
 
 .flipped {
-  transform: rotateY( 180deg ); 
+  transform: rotateY( 180deg );
+  transition: all 0.6s cubic-bezier(.25,.8,.25,1);  
 }
