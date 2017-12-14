@@ -1,14 +1,50 @@
 /*************************
  *         
  *      DATA
+ * initCardStack questions from:
+ * https://thatjsdude.com/interview/js2.html
  *
  ***********************/
 var initCardStack = [
+    { 
+      front: 'What are the differences between null and undefined',
+      back: 'undefined means, value of the variable is not define \n null means empty or non-existent value which is used by programmers to indicate no value.'
+    },
     {
-    front: 'CARD FRONT', back: 'CARD BACK'
-    }, 
+      front: 'What is "typeof []"',
+      back: 'Object. Actually Array is derived from Object. If you want to check array use Array.isArray(arr)'
+    },
+    { front: 'What is "2+true"' ,
+      back: '3. The plus operator between a number and a boolean or two boolean will convert boolean to number'
+    },
     {
-    front: 'CARD FRONT 2', back: 'CARD BACK 2'}
+      front: 'What is "\'6\'+9"',
+      back: '69'
+    },
+    {
+      front: 'What is the value of "4+3+2+\'1\'"',
+      back: '91. 4+3 results 7 and 7+2 is 9. Then 9 + "1"'
+    },
+    {
+      front:'"null == undefined" evaluates?', 
+      back: 'true'
+    },
+    {
+      front: 'What is the value of "typeof null"' ,
+      back: '"object"'
+    },
+    {
+      front:'What is the value of "typeof(NaN)"' , 
+      back: '"number"',
+    },
+    {
+      front: 'Does "'false' == false"' , 
+      back: 'No. Because, it\'s a string with length greater than 0. Only empty string is false'
+    },
+    {
+      front:  'Is "'  '" is false?' ,
+      back: 'No. Because, it\'s not an empty string. There is a white space in it.'
+    }
 ]
 
 var currentGameStack = []
