@@ -1,6 +1,7 @@
 /*************************
  *         
  *      DATA
+ *
  ***********************/
 var initCardStack = [
     {
@@ -16,9 +17,7 @@ var discardStack = []
 
 /*************************************************
  *
- *
  *          EVENTS
- *
  *
  *************************************************/
 
@@ -61,12 +60,25 @@ $('#next').click( function (){
   }
 })
 
+// Save CurrentGame or Delete localStorage if finished  
+
+$( window ).on( 'beforeunload', function() {
+  if ( currentGameStack[0] != null ) {
+    localStorage.setItem( 'previousGame', JSON.stringify( currentGameStack ))
+    localStorage.setItem( 'previousDiscard', JSON.stringify( discardStack))
+  } else {
+    localStorage.removeItem( 'previousGame')
+    localStorage.removeItem( 'previousDiscard')  
+  }
+
+})
+
+
+
+
 /*************************************************
- *  Init Game Cards cards
- *  
- *  Should populate game with data, and allow
- *  for future stacks.  
- *
+ *   
+ *  Populate game with data
  *
  * ***********************************************/
 
@@ -79,14 +91,20 @@ function checkLocalCardStack(){
  }
 }
 
-// Could be extended in future, for now a bit wordy  
+// Could be extended in future, for now a bit wordy 
+//TODO Refactor 
+
 
 function initGameStack( checkedStack ){
-  if( checkedStack == true ){
+  if( checkedStack == true && localStorage.getItem( 'previousGame') == null){
     return localStorage.getItem( 'initCardStack' )
+  } else if ( localStorage.getItem( 'previousGame' ) != null ) {
+      //Side-effect I'd like to remove
+      loadCards(localStorage.getItem( 'previousDiscard'), discardStack )
+        return localStorage.getItem( 'previousGame')
   } else {
-    localStorage.setItem( 'initCardStack', JSON.stringify(initCardStack))
-    return localStorage.getItem( 'initCardStack' )
+      localStorage.setItem( 'initCardStack', JSON.stringify(initCardStack))
+        return localStorage.getItem( 'initCardStack' )
   }
 }
 
@@ -143,15 +161,15 @@ function selecetCard() {
     return cardInPlay 
 }
 
-//move card and clears mark in DOM, might wa
+//move card and clears mark in DOM
 //TODO: revaluate this structure 
 
 function moveCard( cardInPlay ){
-    $('.card').attr('data-mark', '')
+  $('.card').attr('data-mark', '')
     if (cardInPlay.mark == 'correct' ){
       discardStack.push( cardInPlay )	 
     } else {
-      currentGameStack.push( cardInPlay )
+        currentGameStack.push( cardInPlay )
     }
 }
 
