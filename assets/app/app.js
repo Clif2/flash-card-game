@@ -116,8 +116,9 @@ function getTopCard( cardStack ){
 
 
 function displayCard( topCard ){
-  $('figure#front').contents().replaceWith(topCard.front)
-  $('figure#back').contents().replaceWith(topCard.back)
+  $('.card').removeClass('flipped')
+  $('figure#front p').contents().replaceWith(topCard.front)
+  $('figure#back p').contents().replaceWith(topCard.back)
 
 } 
 
