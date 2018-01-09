@@ -1,6 +1,6 @@
 // excellent program organization, naming practices, and scoping of each function's purposes. I think in some cases you could have functions be slightly less granular, but I think you started to realize this and in general your code is very-well thought out and clean
 
-
+// I see that you've also minimized the number of global variables you have too which is awesome
 
 /*************************
  *         
@@ -157,10 +157,10 @@ function loadCards( storage, array ){
 function getTopCard( cardStack ){
   if (currentGameStack[0] != null) { 
     topCard = currentGameStack[0]
-      return topCard
+    return topCard
   } else {
     topCard = {front : 'FIN', back : 'FIN'}
-      return topCard
+    return topCard
   }  
 }
 
